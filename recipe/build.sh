@@ -5,7 +5,8 @@ if [[ "${target_platform}" == "osx"* ]]; then
     FEATURE_SET="macos"
 fi
 
-cargo build --release --target="${CARGO_BUILD_TARGET}" --features "${FEATURE_SET}"
+export TARGET="${CARGO_BUILD_TARGET}"
+cargo build --release --features "${FEATURE_SET}"
 
 make PROFILE=Release PREFIX="${PREFIX}" PROG_SUFFIX= MULTICALL=y install
 
