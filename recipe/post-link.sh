@@ -13,6 +13,6 @@ for i in ${util_list//,/ }
 do
   echo $i # debug
   "$util_bin" completion "$i" zsh > "$CONDA_PREFIX"/share/zsh/site-functions/_"$i"
-  "$util_bin" completion "$i" zsh > "$CONDA_PREFIX"/share/bash-completion/completions/"$i"
-  "$util_bin" completion "$i" zsh > "$CONDA_PREFIX"/share/fish/vendor_completions.d/"$i".fish
+  "$util_bin" completion "$i" bash > "$CONDA_PREFIX"/share/bash-completion/completions/"$i"
+  "$util_bin" completion "$i" fish > "$CONDA_PREFIX"/share/fish/vendor_completions.d/"$i".fish
 done
