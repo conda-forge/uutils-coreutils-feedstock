@@ -1,6 +1,6 @@
 --- GNUmakefile
 +++ GNUmakefile
-@@ -322,22 +322,23 @@
+@@ -322,22 +322,25 @@
  	mkdir -p $(INSTALLDIR_BIN)
 +	SYS_LN := $(shell command -v ln 2> /dev/null)
 +	SYS_MKDIR := $(shell command -v mkdir 2> /dev/null)
