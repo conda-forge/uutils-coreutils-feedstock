@@ -1,7 +1,5 @@
 set -ex
 
-# Install Shell completion
-echo Unlinking coreutils # debug
 util_bin="$CONDA_PREFIX"/bin/coreutils
 util_list="$("$util_bin" --help | tail -n +7)"
 util_list="${util_list//[[:space:]]/}"
