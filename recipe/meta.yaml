@@ -1,5 +1,5 @@
 {% set name = "uutils-coreutils" %}
-{% set version = "0.0.17" %}
+{% set version = "0.0.18" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
-  sha256: a133449db283c145483e7945c925104007294d600b75991c5dad2cc91dc11d2e
+  sha256: 1eed6317763c2fad1283bac057b25eae81a61fd8f364b814f20e1aaa32d16f8d
   patches:
     - 0001-FIX_BUILDDIR_IN_MAKE.patch  # [not win]
     # Fixes long command and quotes problems
     - 0002-SHORTEN_SH_COMMANDS.patch
 
 build:
-  number: 1
+  number: 0
   ignore_run_exports:
     - libstdcxx-ng  # [linux]
   ignore_run_exports_from:
