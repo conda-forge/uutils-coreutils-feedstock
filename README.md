@@ -1,11 +1,11 @@
-About uutils-coreutils
-======================
+About uutils-coreutils-feedstock
+================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/uutils-coreutils-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/uutils/coreutils
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/uutils-coreutils-feedstock/blob/main/LICENSE.txt)
 
 Summary: Cross-platform Rust rewrite of the GNU coreutils
 
