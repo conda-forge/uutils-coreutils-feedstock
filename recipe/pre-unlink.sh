@@ -10,4 +10,5 @@ do
   rm "$CONDA_PREFIX"/share/zsh/site-functions/_"$i"
   rm "$CONDA_PREFIX"/share/bash-completion/completions/"$i"
   rm "$CONDA_PREFIX"/share/fish/vendor_completions.d/"$i".fish
+  rm "$CONDA_PREFIX"/share/man/man1/"$i".1
 done
