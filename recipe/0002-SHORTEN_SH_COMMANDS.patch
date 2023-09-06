@@ -19,3 +19,17 @@
  else
  	$(foreach prog, $(INSTALLEES), \
  		$(INSTALL) $(BUILDDIR)/$(prog) $(INSTALLDIR_BIN)/$(PROG_PREFIX)$(prog);)
+@@ -371,11 +373,11 @@
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d
+-	$(foreach prog, $(INSTALLEES), \
++	for prog in $(INSTALLEES); do \
+ 		$(INSTALL) $(BUILDDIR)/completions/zsh/_$(PROG_PREFIX)$(prog) $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions/; \
+ 		$(INSTALL) $(BUILDDIR)/completions/bash/$(PROG_PREFIX)$(prog) $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions/; \
+ 		$(INSTALL) $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$(prog).fish $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d/; \
+-	)
++	done
+ 
+ uninstall:
+ ifeq (${MULTICALL}, y)
