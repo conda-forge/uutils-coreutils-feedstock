@@ -28,10 +28,10 @@
 -		$(INSTALL) $(BUILDDIR)/completions/bash/$(PROG_PREFIX)$(prog) $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions/; \
 -		$(INSTALL) $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$(prog).fish $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d/; \
 -	)
-+	for prog in $(INSTALLEES); do
-+		$(INSTALL) $(BUILDDIR)/completions/zsh/_$(PROG_PREFIX)$$prog $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions/
-+		$(INSTALL) $(BUILDDIR)/completions/bash/$(PROG_PREFIX)$$prog $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions/
-+		$(INSTALL) $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$$prog.fish $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d/
++	for prog in $(INSTALLEES); do \
++		$(INSTALL) $(BUILDDIR)/completions/zsh/_$(PROG_PREFIX)$$prog $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions/; \
++		$(INSTALL) $(BUILDDIR)/completions/bash/$(PROG_PREFIX)$$prog $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions/; \
++		$(INSTALL) $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$$prog.fish $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d/; \
 +	done
  
  uninstall:
