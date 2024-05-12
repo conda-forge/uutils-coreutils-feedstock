@@ -1,5 +1,5 @@
 {% set name = "uutils-coreutils" %}
-{% set version = "0.0.20" %}
+{% set version = "0.0.21" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
-  sha256: 127487e8f65e13f9f55a0397e3e9b75ed2d20207a6cee8ef27018bf5309441c4
+  sha256: a3295f7ec0600f379ec829649fcedc0432f493cbfc64ad10a1f9b6c52e874387
   patches:
     - 0001-FIX_BUILDDIR_IN_MAKE.patch  # [not win]
     # Fixes long command and quotes problems
