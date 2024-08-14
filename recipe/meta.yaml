@@ -16,7 +16,12 @@ source:
 build:
   number: 0
   ignore_run_exports:
+    # cannot use same approach as for non-linux, because we still need the
+    # run-export for libgcc, which has a lower bound that's different from
+    # the compiler version itself, c.f. min_runtime_version in
+    # https://github.com/conda-forge/ctng-compiler-activation-feedstock/blob/main/recipe/meta.yaml
     - libstdcxx-ng  # [linux]
+    - libstdcxx     # [linux]
   ignore_run_exports_from:
     - {{ compiler('cxx') }}  # [not linux]
 
