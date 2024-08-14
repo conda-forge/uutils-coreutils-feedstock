@@ -1,4 +1,4 @@
-From 0f6ac00f455351aa80ee0844a2d433405fb27154 Mon Sep 17 00:00:00 2001
+From 716f4bc96ebe350aaa110cbf7b9cbc560ff0c8b7 Mon Sep 17 00:00:00 2001
 From: Kerry Su <me@sshockwave.net>
 Date: Sun, 20 Nov 2022 15:27:21 +0800
 Subject: [PATCH 2/2] shorten sh commands
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] shorten sh commands
  1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/GNUmakefile b/GNUmakefile
-index be39efaf2..d20ac1448 100644
+index d6d4b2103..0caa6cd4e 100644
 --- a/GNUmakefile
 +++ b/GNUmakefile
-@@ -350,13 +350,15 @@ completions: build-coreutils
+@@ -352,13 +352,15 @@ completions: build-coreutils
  		$(BUILDDIR)/coreutils completion $(prog) fish > $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$(prog).fish; \
  	)
  
@@ -30,7 +30,7 @@ index be39efaf2..d20ac1448 100644
  else
  	$(foreach prog, $(INSTALLEES), \
  		$(INSTALL) $(BUILDDIR)/$(prog) $(INSTALLDIR_BIN)/$(PROG_PREFIX)$(prog);)
-@@ -367,6 +369,7 @@ endif
+@@ -369,6 +371,7 @@ endif
  		$(INSTALL) $(BUILDDIR)/man/$(PROG_PREFIX)$(prog).1 $(DESTDIR)$(DATAROOTDIR)/man/man1/; \
  	)
  

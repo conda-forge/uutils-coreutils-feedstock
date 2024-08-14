@@ -1,4 +1,4 @@
-From 6632d6cae6114d09ba2e097459b4a6e0c7f41490 Mon Sep 17 00:00:00 2001
+From 92c521abbfac0e735a63a15b293bf61a87dc963d Mon Sep 17 00:00:00 2001
 From: Kerry Su <me@sshockwave.net>
 Date: Sat, 19 Nov 2022 21:36:53 +0800
 Subject: [PATCH 1/2] fix BUILDDIR in make
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] fix BUILDDIR in make
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/GNUmakefile b/GNUmakefile
-index ad2d38081..be39efaf2 100644
+index 0b4f2d04c..d6d4b2103 100644
 --- a/GNUmakefile
 +++ b/GNUmakefile
 @@ -33,7 +33,7 @@ PROG_PREFIX ?=
