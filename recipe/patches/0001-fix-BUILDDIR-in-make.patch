@@ -1,0 +1,22 @@
+From 3cea918edc98b41888fe1ecec944bd7bd8dd9ef2 Mon Sep 17 00:00:00 2001
+From: Kerry Su <me@sshockwave.net>
+Date: Sat, 19 Nov 2022 21:36:53 +0800
+Subject: [PATCH 1/2] fix BUILDDIR in make
+
+---
+ GNUmakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 26d6de5ba..121416f24 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -33,7 +33,7 @@ PROG_PREFIX ?=
+ # This won't support any directory with spaces in its name, but you can just
+ # make a symlink without spaces that points to the directory.
+ BASEDIR       ?= $(shell pwd)
+-BUILDDIR      := $(BASEDIR)/target/${PROFILE}
++BUILDDIR      := $(BASEDIR)/target/${CARGO_BUILD_TARGET}/${PROFILE}
+ PKG_BUILDDIR  := $(BUILDDIR)/deps
+ DOCSDIR       := $(BASEDIR)/docs
+ 

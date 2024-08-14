@@ -1,0 +1,39 @@
+From a7b96e0954b8c76b026afec08fdf3d8a381927c0 Mon Sep 17 00:00:00 2001
+From: Kerry Su <me@sshockwave.net>
+Date: Sun, 20 Nov 2022 15:27:21 +0800
+Subject: [PATCH 2/2] shorten sh commands
+
+---
+ GNUmakefile | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 121416f24..7995ee1d8 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -337,18 +337,22 @@ clean:
+ distclean: clean
+ 	$(CARGO) clean $(CARGOFLAGS) && $(CARGO) update $(CARGOFLAGS)
+ 
++SYS_LN := "$(shell command -v ln 2> /dev/null)"
+ install: build
+ 	mkdir -p $(INSTALLDIR_BIN)
+ ifeq (${MULTICALL}, y)
+ 	$(INSTALL) $(BUILDDIR)/coreutils $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils
+-	cd $(INSTALLDIR_BIN) && $(foreach prog, $(filter-out coreutils, $(INSTALLEES)), \
+-		ln -fs $(PROG_PREFIX)coreutils $(PROG_PREFIX)$(prog) &&) :
+-	$(if $(findstring test,$(INSTALLEES)), cd $(INSTALLDIR_BIN) && ln -fs $(PROG_PREFIX)coreutils $(PROG_PREFIX)[)
++	cd "$(INSTALLDIR_BIN)" && for prog in $(filter-out coreutils, $(INSTALLEES)); do \
++		$(SYS_LN) -fs $(PROG_PREFIX)coreutils$(PROG_SUFFIX) $(PROG_PREFIX)$$prog$(PROG_SUFFIX); done;
++	$(if $(findstring test,$(INSTALLEES)), cd "$(INSTALLDIR_BIN)" && \
++		$(SYS_LN) -fs $(PROG_PREFIX)coreutils$(PROG_SUFFIX) $(PROG_PREFIX)[$(PROG_SUFFIX))
+ else
+ 	$(foreach prog, $(INSTALLEES), \
+ 		$(INSTALL) $(BUILDDIR)/$(prog) $(INSTALLDIR_BIN)/$(PROG_PREFIX)$(prog);)
+ 	$(if $(findstring test,$(INSTALLEES)), $(INSTALL) $(BUILDDIR)/test $(INSTALLDIR_BIN)/$(PROG_PREFIX)[)
+ endif
++
++completion:
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/fish/vendor_completions.d
