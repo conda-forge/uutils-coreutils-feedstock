@@ -1,22 +1,22 @@
-From a7b96e0954b8c76b026afec08fdf3d8a381927c0 Mon Sep 17 00:00:00 2001
+From 0f6ac00f455351aa80ee0844a2d433405fb27154 Mon Sep 17 00:00:00 2001
 From: Kerry Su <me@sshockwave.net>
 Date: Sun, 20 Nov 2022 15:27:21 +0800
 Subject: [PATCH 2/2] shorten sh commands
 
 ---
- GNUmakefile | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ GNUmakefile | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/GNUmakefile b/GNUmakefile
-index 121416f24..7995ee1d8 100644
+index be39efaf2..d20ac1448 100644
 --- a/GNUmakefile
 +++ b/GNUmakefile
-@@ -337,18 +337,22 @@ clean:
- distclean: clean
- 	$(CARGO) clean $(CARGOFLAGS) && $(CARGO) update $(CARGOFLAGS)
+@@ -350,13 +350,15 @@ completions: build-coreutils
+ 		$(BUILDDIR)/coreutils completion $(prog) fish > $(BUILDDIR)/completions/fish/$(PROG_PREFIX)$(prog).fish; \
+ 	)
  
 +SYS_LN := "$(shell command -v ln 2> /dev/null)"
- install: build
+ install: build manpages completions
  	mkdir -p $(INSTALLDIR_BIN)
  ifeq (${MULTICALL}, y)
  	$(INSTALL) $(BUILDDIR)/coreutils $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils
@@ -30,9 +30,10 @@ index 121416f24..7995ee1d8 100644
  else
  	$(foreach prog, $(INSTALLEES), \
  		$(INSTALL) $(BUILDDIR)/$(prog) $(INSTALLDIR_BIN)/$(PROG_PREFIX)$(prog);)
- 	$(if $(findstring test,$(INSTALLEES)), $(INSTALL) $(BUILDDIR)/test $(INSTALLDIR_BIN)/$(PROG_PREFIX)[)
- endif
-+
+@@ -367,6 +369,7 @@ endif
+ 		$(INSTALL) $(BUILDDIR)/man/$(PROG_PREFIX)$(prog).1 $(DESTDIR)$(DATAROOTDIR)/man/man1/; \
+ 	)
+ 
 +completion:
  	mkdir -p $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions
  	mkdir -p $(DESTDIR)$(DATAROOTDIR)/bash-completion/completions
