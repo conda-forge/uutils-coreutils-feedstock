@@ -1,0 +1,33 @@
+From 81816c57b7937cd9c0ff4a8c378ff1f0b84027e2 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Wed, 14 Aug 2024 15:44:53 +1100
+Subject: [PATCH 3/3] don't install manpages on windows
+
+---
+ GNUmakefile | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 0caa6cd4e..9a08fb0a3 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -353,7 +353,7 @@ completions: build-coreutils
+ 	)
+ 
+ SYS_LN := "$(shell command -v ln 2> /dev/null)"
+-install: build manpages completions
++install: build
+ 	mkdir -p $(INSTALLDIR_BIN)
+ ifeq (${MULTICALL}, y)
+ 	$(INSTALL) $(BUILDDIR)/coreutils $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils
+@@ -366,10 +366,6 @@ else
+ 		$(INSTALL) $(BUILDDIR)/$(prog) $(INSTALLDIR_BIN)/$(PROG_PREFIX)$(prog);)
+ 	$(if $(findstring test,$(INSTALLEES)), $(INSTALL) $(BUILDDIR)/test $(INSTALLDIR_BIN)/$(PROG_PREFIX)[)
+ endif
+-	mkdir -p $(DESTDIR)$(DATAROOTDIR)/man/man1
+-	$(foreach prog, $(INSTALLEES), \
+-		$(INSTALL) $(BUILDDIR)/man/$(PROG_PREFIX)$(prog).1 $(DESTDIR)$(DATAROOTDIR)/man/man1/; \
+-	)
+ 
+ completion:
+ 	mkdir -p $(DESTDIR)$(DATAROOTDIR)/zsh/site-functions

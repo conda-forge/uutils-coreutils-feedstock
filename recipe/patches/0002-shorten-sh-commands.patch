@@ -1,7 +1,7 @@
 From 716f4bc96ebe350aaa110cbf7b9cbc560ff0c8b7 Mon Sep 17 00:00:00 2001
 From: Kerry Su <me@sshockwave.net>
 Date: Sun, 20 Nov 2022 15:27:21 +0800
-Subject: [PATCH 2/2] shorten sh commands
+Subject: [PATCH 2/3] shorten sh commands
 
 ---
  GNUmakefile | 9 ++++++---

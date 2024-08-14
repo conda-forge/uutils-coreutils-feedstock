@@ -8,9 +8,10 @@ source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
   sha256: 3076543a373c8e727018bd547cc74133f4a6538849e4990388f2bbea9a9aff6b
   patches:
-    - patches/0001-fix-BUILDDIR-in-make.patch   # [unix]
+    - patches/0001-fix-BUILDDIR-in-make.patch               # [unix]
     # Fixes long command and quotes problems
     - patches/0002-shorten-sh-commands.patch
+    - patches/0003-don-t-install-manpages-on-windows.patch  # [win or (build_platform != target_platform)]
 
 build:
   number: 0
