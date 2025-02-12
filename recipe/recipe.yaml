@@ -11,9 +11,6 @@ package:
 source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
   sha256: 127487e8f65e13f9f55a0397e3e9b75ed2d20207a6cee8ef27018bf5309441c4
-  patches:
-    - if: not win
-      then: 0001-FIX_BUILDDIR_IN_MAKE.patch
 
 build:
   number: 0
