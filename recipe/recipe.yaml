@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: uutils-coreutils
-  version: 0.0.20
+  version: 0.0.29
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
-  sha256: 127487e8f65e13f9f55a0397e3e9b75ed2d20207a6cee8ef27018bf5309441c4
+  sha256: e1904ed6e5b8b441bedcba5afa7e8e8c744ef701f6d392de8c8dcc2ea17a34e2
 
 build:
   number: 0
