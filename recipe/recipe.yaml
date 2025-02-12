@@ -1,0 +1,64 @@
+schema_version: 1
+
+context:
+  name: uutils-coreutils
+  version: 0.0.20
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
+  sha256: 127487e8f65e13f9f55a0397e3e9b75ed2d20207a6cee8ef27018bf5309441c4
+  patches:
+    - if: not win
+      then: 0001-FIX_BUILDDIR_IN_MAKE.patch
+    # Fixes long command and quotes problems
+    - 0002-SHORTEN_SH_COMMANDS.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('rust') }}
+    - make
+    - cargo-bundle-licenses
+  ignore_run_exports:
+    by_name:
+      - if: linux
+        then: libstdcxx-ng
+    from_package:
+      - if: not linux
+        then: ${{ compiler('cxx') }}
+  run_constraints:
+    - coreutils ==999999999
+    - gnu-coreutils ==999999999
+
+tests:
+  - script:
+      - coreutils --help
+      - cat --help
+
+about:
+  summary: Cross-platform Rust rewrite of the GNU coreutils
+  description: |
+    uutils is an attempt at writing universal (as in cross-platform) CLI utilities in Rust.
+    uutils aims to work on as many platforms as possible,
+    to be able to use the same utils on Linux, Mac, Windows and other platforms.
+    This ensures, for example, that scripts can be easily transferred between platforms.
+    Rust was chosen not only because it is fast and safe,
+    but is also excellent for writing cross-platform code.
+  license: MIT
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  homepage: https://github.com/uutils/coreutils
+  repository: https://github.com/uutils/coreutils
+  documentation: https://uutils.github.io/user/
+
+extra:
+  recipe-maintainers:
+    - sshockwave
