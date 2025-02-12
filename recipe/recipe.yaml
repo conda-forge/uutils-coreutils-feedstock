@@ -26,13 +26,6 @@ requirements:
     - ${{ compiler('rust') }}
     - make
     - cargo-bundle-licenses
-  ignore_run_exports:
-    by_name:
-      - if: linux
-        then: libstdcxx-ng
-    from_package:
-      - if: not linux
-        then: ${{ compiler('cxx') }}
   run_constraints:
     - coreutils ==999999999
     - gnu-coreutils ==999999999
