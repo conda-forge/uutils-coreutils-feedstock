@@ -14,8 +14,6 @@ source:
   patches:
     - if: not win
       then: 0001-FIX_BUILDDIR_IN_MAKE.patch
-    # Fixes long command and quotes problems
-    - 0002-SHORTEN_SH_COMMANDS.patch
 
 build:
   number: 0
