@@ -20,7 +20,6 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
     - ${{ compiler('rust') }}
-    - make
     - cargo-bundle-licenses
   ignore_run_exports:
     by_name:
