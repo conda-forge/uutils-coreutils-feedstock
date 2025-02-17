@@ -11,6 +11,11 @@ package:
 source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
   sha256: e1904ed6e5b8b441bedcba5afa7e8e8c744ef701f6d392de8c8dcc2ea17a34e2
+  patches:
+    - if: not win
+      then: 0001-FIX_BUILDDIR_IN_MAKE.patch
+    - 0002-Fix-makefile-install-of-completion-scripts.patch
+    - 0003-GNUmakefile-support-skipping-manpages-and-completion.patch
 
 build:
   number: 0
@@ -20,6 +25,7 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
     - ${{ compiler('rust') }}
+    - make
     - cargo-bundle-licenses
   ignore_run_exports:
     by_name:
