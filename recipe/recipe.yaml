@@ -14,8 +14,9 @@ source:
   patches:
     - if: not win
       then: 0001-FIX_BUILDDIR_IN_MAKE.patch
-    - 0002-Fix-makefile-install-of-completion-scripts.patch
+    - 0002-GNUmakefile-fix-install-error-argument-list-too-long.patch
     - 0003-GNUmakefile-support-skipping-manpages-and-completion.patch
+    - 0004-GNUmakefile-fix-install-of-ln-to-PATH.patch
 
 build:
   number: 0
