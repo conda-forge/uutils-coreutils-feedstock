@@ -1,4 +1,4 @@
-make PROFILE=release PREFIX="%CYGWIN_PREFIX%/Library" MULTICALL=y PROG_SUFFIX=.exe install
+make PROFILE=release PREFIX="%LIBRARY_PREFIX%" MULTICALL=y PROG_SUFFIX=.exe install
 if errorlevel 1 exit 1
 
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
