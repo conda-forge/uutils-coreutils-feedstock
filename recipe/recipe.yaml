@@ -43,8 +43,12 @@ requirements:
 
 tests:
   - script:
-      - coreutils --help
-      - cat --help
+    - coreutils --help
+    - cat --help
+  - package_contents:
+      bin:
+        - coreutils
+        - cat
 
 about:
   summary: Cross-platform Rust rewrite of the GNU coreutils
