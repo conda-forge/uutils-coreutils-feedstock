@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: uutils-coreutils
-  version: 0.0.29
+  version: 0.0.30
 
 package:
   name: ${{ name|lower }}
@@ -10,13 +10,11 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
-  sha256: e1904ed6e5b8b441bedcba5afa7e8e8c744ef701f6d392de8c8dcc2ea17a34e2
+  sha256: 732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22
   patches:
     - if: not win
       then: 0001-FIX_BUILDDIR_IN_MAKE.patch
-    - 0002-GNUmakefile-fix-install-error-argument-list-too-long.patch
-    - 0003-GNUmakefile-support-skipping-manpages-and-completion.patch
-    - 0004-GNUmakefile-fix-install-of-ln-to-PATH.patch
+    - 0002-GNUmakefile-fix-install-of-ln-to-PATH.patch
 
 build:
   number: 0
