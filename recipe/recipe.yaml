@@ -12,7 +12,8 @@ source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
   sha256: 732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22
   patches:
-    - 0001-GNUmakefile-fix-install-of-ln-to-PATH.patch
+    - 0001-GNUmakefile-support-CARGO_BUILD_TARGET.patch
+    - 0002-GNUmakefile-fix-install-of-ln-to-PATH.patch
 
 build:
   number: 0

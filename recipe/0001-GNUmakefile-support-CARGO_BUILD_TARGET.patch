@@ -1,0 +1,29 @@
+From b8d4d93c9561f8e32a95e8af802eacc3c9961e51 Mon Sep 17 00:00:00 2001
+From: Brandon Maier <brandon.maier@gmail.com>
+Date: Sat, 8 Mar 2025 20:58:25 -0600
+Subject: [PATCH 1/2] GNUmakefile: support CARGO_BUILD_TARGET
+
+---
+ GNUmakefile | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index b49711569..b1c532ba3 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -44,8 +44,12 @@ BASEDIR       ?= $(shell pwd)
+ ifdef CARGO_TARGET_DIR
+ BUILDDIR 	  := $(CARGO_TARGET_DIR)/${PROFILE}
+ else
++ifdef CARGO_BUILD_TARGET
++BUILDDIR      := $(BASEDIR)/target/${CARGO_BUILD_TARGET}/${PROFILE}
++else
+ BUILDDIR      := $(BASEDIR)/target/${PROFILE}
+ endif
++endif
+ PKG_BUILDDIR  := $(BUILDDIR)/deps
+ DOCSDIR       := $(BASEDIR)/docs
+ 
+-- 
+2.48.1
+
