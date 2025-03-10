@@ -1,3 +1,6 @@
+cargo build --release --features windows
+if errorlevel 1 exit 1
+
 make PROFILE=release PREFIX="%CYGWIN_PREFIX%/Library" MULTICALL=n PROG_SUFFIX=.exe install
 if errorlevel 1 exit 1
 
