@@ -29,6 +29,8 @@ requirements:
     - {{ cdt('libselinux-devel') }}  # [linux]
     - make
     - cargo-bundle-licenses
+  host:
+    - libclang  # [linux]
   run_constrained:
     - coreutils ==999999999
     - gnu-coreutils ==999999999
