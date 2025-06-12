@@ -9,10 +9,11 @@
 +install: build
  	mkdir -p $(INSTALLDIR_BIN)
  ifeq (${MULTICALL}, y)
- 	$(INSTALL) $(BUILDDIR)/coreutils $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils
+-	$(INSTALL) $(BUILDDIR)/coreutils $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils
 -	cd $(INSTALLDIR_BIN) && $(foreach prog, $(filter-out coreutils, $(INSTALLEES)), \
 -		ln -fs $(PROG_PREFIX)coreutils $(PROG_PREFIX)$(prog) &&) :
 -	$(if $(findstring test,$(INSTALLEES)), cd $(INSTALLDIR_BIN) && ln -fs $(PROG_PREFIX)coreutils $(PROG_PREFIX)[)
++	$(INSTALL) $(BUILDDIR)/coreutils$(PROG_SUFFIX) $(INSTALLDIR_BIN)/$(PROG_PREFIX)coreutils$(PROG_SUFFIX)
 +	cd "$(INSTALLDIR_BIN)" && for prog in $(filter-out coreutils, $(INSTALLEES)); do \
 +		$(SYS_LN) -fs $(PROG_PREFIX)coreutils$(PROG_SUFFIX) $(PROG_PREFIX)$$prog$(PROG_SUFFIX); done;
 +	$(if $(findstring test,$(INSTALLEES)), cd "$(INSTALLDIR_BIN)" && \
