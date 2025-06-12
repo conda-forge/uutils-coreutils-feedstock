@@ -31,6 +31,7 @@ requirements:
   run_constrained:
     - coreutils ==999999999
     - gnu-coreutils ==999999999
+    - m2-coreutils ==999999999
 
 test:
   commands:
