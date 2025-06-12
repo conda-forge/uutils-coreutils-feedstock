@@ -11,6 +11,7 @@ source:
   patches:
     # Fixes long command and quotes problems
     - 0002-SHORTEN_SH_COMMANDS.patch
+    - 0003-DISABLE_SELINUX.patch  # [not linux]
 
 build:
   number: 0
@@ -25,6 +26,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('rust') }}
+    - {{ cdt('libselinux-devel') }}  # [linux]
     - make
     - cargo-bundle-licenses
   run_constrained:
