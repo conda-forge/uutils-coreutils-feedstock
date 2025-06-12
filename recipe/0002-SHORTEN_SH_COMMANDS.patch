@@ -1,10 +1,11 @@
 --- GNUmakefile
 +++ GNUmakefile
-@@ -395,14 +395,14 @@
+@@ -395,14 +395,15 @@
  install-completions:
  endif
  
 -install: build install-manpages install-completions
++SYS_LN := "$(shell command -v ln 2> /dev/null)"
 +install: build
  	mkdir -p $(INSTALLDIR_BIN)
  ifeq (${MULTICALL}, y)
