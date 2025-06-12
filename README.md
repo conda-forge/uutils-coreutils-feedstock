@@ -3,7 +3,7 @@ About uutils-coreutils-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/uutils-coreutils-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/uutils/coreutils
+Home: https://uutils.github.io/coreutils/
 
 Package license: MIT
 
@@ -11,7 +11,7 @@ Summary: Cross-platform Rust rewrite of the GNU coreutils
 
 Development: https://github.com/uutils/coreutils
 
-Documentation: https://uutils.github.io/user/
+Documentation: https://uutils.github.io/coreutils/docs/
 
 uutils is an attempt at writing universal (as in cross-platform) CLI utilities in Rust.
 uutils aims to work on as many platforms as possible,
@@ -196,7 +196,4 @@ Feedstock Maintainers
 =====================
 
 * [@sshockwave](https://github.com/sshockwave/)
-
-
-<!-- dummy commit to enable rerendering -->
 
