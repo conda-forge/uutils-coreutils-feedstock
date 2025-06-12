@@ -9,7 +9,6 @@ source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
   sha256: 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
   patches:
-    - 0001-FIX_BUILDDIR_IN_MAKE.patch  # [not win]
     # Fixes long command and quotes problems
     - 0002-SHORTEN_SH_COMMANDS.patch
 
