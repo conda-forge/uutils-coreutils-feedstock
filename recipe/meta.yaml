@@ -39,7 +39,7 @@ test:
     - cat --help
 
 about:
-  home: https://github.com/uutils/coreutils
+  home: https://uutils.github.io/coreutils/
   summary: Cross-platform Rust rewrite of the GNU coreutils
   description: |
     uutils is an attempt at writing universal (as in cross-platform) CLI utilities in Rust.
@@ -53,7 +53,7 @@ about:
   license_file:
     - LICENSE
     - THIRDPARTY.yml
-  doc_url: https://uutils.github.io/user/
+  doc_url: https://uutils.github.io/coreutils/docs/
   dev_url: https://github.com/uutils/coreutils
 
 extra:
