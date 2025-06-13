@@ -28,7 +28,6 @@ requirements:
     - make
     - cargo-bundle-licenses
     - libclang  # [linux]
-    - clang  # [linux]
   run_constrained:
     - coreutils ==999999999
     - gnu-coreutils ==999999999
