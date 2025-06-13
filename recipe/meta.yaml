@@ -18,6 +18,8 @@ build:
   ignore_run_exports:
     - libstdcxx  # [linux]
     - libstdcxx-ng  # [linux]
+  ignore_run_exports_from:
+    - {{ compiler('cxx') }}  # [not linux]
 
 requirements:
   build:
