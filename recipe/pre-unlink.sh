@@ -1,7 +1,8 @@
 set -ex
 
 util_bin="$CONDA_PREFIX"/bin/coreutils
-util_list="$("$util_bin" --help | tail -n +7)"
+util_list="$("$util_bin" --help)"
+util_list="${str#*Currently defined functions:}"
 util_list="${util_list//[[:space:]]/}"
 util_list="${util_list//,/ }"
 

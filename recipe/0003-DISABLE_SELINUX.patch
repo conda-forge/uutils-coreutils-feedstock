@@ -1,0 +1,10 @@
+--- GNUmakefile
++++ GNUmakefile
+@@ -182,7 +182,6 @@
+ ifneq ($(OS),Windows_NT)
+ 	PROGS := $(PROGS) $(UNIX_PROGS)
+ # Build the selinux command even if not on the system
+-	PROGS := $(PROGS) $(SELINUX_PROGS)
+ endif
+ 
+ UTILS ?= $(PROGS)
