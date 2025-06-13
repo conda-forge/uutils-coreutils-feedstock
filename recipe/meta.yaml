@@ -11,7 +11,7 @@ source:
   patches:
     # Fixes long command and quotes problems
     - 0002-SHORTEN_SH_COMMANDS.patch
-    - 0003-DISABLE_SELINUX.patch  # [not linux]
+    - 0003-DISABLE_SELINUX.patch
 
 build:
   number: 0
