@@ -1,5 +1,5 @@
 {% set name = "uutils-coreutils" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
-  sha256: 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
+  sha256: 4a847a3aaf241d11f07fdc04ef36d73c722759675858665bc17e94f56c4fbfb3
   patches:
     # Fixes long command and quotes problems
     - 0002-SHORTEN_SH_COMMANDS.patch
