@@ -1,8 +1,17 @@
-cargo build --release --features windows
-if errorlevel 1 exit 1
+@echo on
 
-make PROFILE=Release PREFIX="%LIBRARY_PREFIX%" MULTICALL=y PROG_SUFFIX=.exe install
-if errorlevel 1 exit 1
+set CARGO_PROFILE_RELEASE_STRIP=symbols
+set CARGO_PROFILE_RELEASE_LTO=fat
 
+:: check licenses
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-if errorlevel 1 exit 1
+
+:: build
+set CARGO_BUILD_TARGET=
+make PROFILE=release MULTICALL=y PREFIX="%LIBRARY_PREFIX%" install || goto :error
+
+goto :EOF
+
+:error
+echo Failed with error #%errorlevel%.
+exit 1

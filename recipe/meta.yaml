@@ -1,5 +1,5 @@
 {% set name = "uutils-coreutils" %}
-{% set version = "0.1.0" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,28 +7,21 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/{{ version }}.tar.gz
-  sha256: 55c528f2b53c1b30cb704550131a806e84721c87b3707b588a961a6c97f110d8
-  patches:
-    # Fixes long command and quotes problems
-    - 0002-SHORTEN_SH_COMMANDS.patch
-    - 0003-DISABLE_SELINUX.patch
+  sha256: 422b4bab88d6a4da9eabcc947b4e8e0c7fbd123c88700f8750da45910bfb03b6
 
 build:
   number: 0
-  ignore_run_exports:
-    - libstdcxx  # [linux]
-    - libstdcxx-ng  # [linux]
-  ignore_run_exports_from:
-    - {{ compiler('cxx') }}  # [not linux]
+  script_env:
+    - LIBCLANG_PATH=$BUILD_PREFIX/lib  # [linux]
 
 requirements:
   build:
     - {{ stdlib('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
     - {{ compiler('rust') }}
-    - {{ cdt('libselinux-devel') }}  # [linux]
-    - make
     - cargo-bundle-licenses
+    - make
+    - {{ cdt('libselinux-devel') }}  # [linux]
     - libclang  # [linux]
   run_constrained:
     - coreutils ==999999999
