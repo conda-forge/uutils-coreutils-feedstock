@@ -1,2 +1,4 @@
-rust_compiler_version:
-  - "*"
+rust_compiler_version:     # [windows]
+  - "*"                    # [windows]
+c_stdlib_version:          # [linux]
+  - "2.28"                 # [linux]
