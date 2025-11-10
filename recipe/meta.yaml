@@ -12,7 +12,10 @@ source:
 build:
   number: 0
   script_env:
+    - CARGO_PROFILE_RELEASE_STRIP=symbols
+    - CARGO_PROFILE_RELEASE_LTO=fat
     - LIBCLANG_PATH=$BUILD_PREFIX/lib  # [linux]
+    - C_INCLUDE_PATH=$PREFIX/include  # [linux]
 
 requirements:
   build:
