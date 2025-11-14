@@ -15,6 +15,9 @@ build:
     - CARGO_PROFILE_RELEASE_STRIP=symbols
     - CARGO_PROFILE_RELEASE_LTO=fat
     - LIBCLANG_PATH=$BUILD_PREFIX/lib  # [linux]
+  ignore_run_exports_from:
+    - {{ stdlib('c') }}  # [win]
+    - {{ compiler('c') }}  # [win]
 
 requirements:
   build:
