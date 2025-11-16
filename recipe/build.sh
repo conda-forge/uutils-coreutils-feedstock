@@ -1,16 +1,8 @@
-set -ex
+#!/usr/bin/env bash
 
-FEATURE_SET="unix"
-if [[ "${target_platform}" == "osx"* ]]; then
-    FEATURE_SET="macos"
-else
-    export LIBCLANG_PATH="${BUILD_PREFIX}/lib"
-fi
-
-export C_INCLUDE_PATH="${PREFIX}/include"
-
-cargo build --release --features "${FEATURE_SET}"
-
-make PROFILE=Release PREFIX="${PREFIX}" PROG_SUFFIX= MULTICALL=y CARGO_TARGET_DIR="$(pwd)/target/${CARGO_BUILD_TARGET}" install
+set -o xtrace -o nounset -o pipefail -o errexit
 
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+
+export -n CARGO_BUILD_TARGET # https://github.com/uutils/coreutils/issues/9206
+make PROFILE=release MULTICALL=y PREFIX="${PREFIX}" install
