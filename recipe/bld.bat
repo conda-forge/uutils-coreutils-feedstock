@@ -13,7 +13,7 @@ for /f "usebackq delims=" %%A in (`cygpath -u "%%PREFIX%%"`) do set "PREFIX=%%A"
 
 :: build
 set CARGO_BUILD_TARGET=
-make PROFILE=release MULTICALL=y PREFIX="%PREFIX%" LN="%LN%" install || goto :error
+make PROFILE=release MULTICALL=n PREFIX="%PREFIX%" LN="%LN%" install || goto :error
 
 goto :EOF
 
