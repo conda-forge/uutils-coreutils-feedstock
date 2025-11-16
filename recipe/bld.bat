@@ -4,7 +4,7 @@
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 for /f "usebackq delims=" %%A in (`where ln`) do set "LN=%%A" :: https://github.com/uutils/coreutils/issues/9244
-for /f "usebackq delims=" %%A in (`where link`) do set "RUSTC_LINKER=%%A"
+for /f "usebackq delims=" %%A in (`where link`) do set "RUSTC_LINKER=%%A" :: https://github.com/conda-forge/uutils-coreutils-feedstock/pull/22
 
 :: convert Windows format path to Unix format
 if "%LN%" == "" ( echo LN not set & goto :error)
