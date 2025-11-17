@@ -20,7 +20,6 @@ This ensures, for example, that scripts can be easily transferred between platfo
 Rust was chosen not only because it is fast and safe,
 but is also excellent for writing cross-platform code.
 
-
 Current build status
 ====================
 
@@ -195,5 +194,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@XhstormR](https://github.com/XhstormR/)
 * [@sshockwave](https://github.com/sshockwave/)
 
