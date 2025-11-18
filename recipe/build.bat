@@ -6,13 +6,9 @@ cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 for /f "usebackq delims=" %%A in (`where ln`) do set "LN=%%A" :: https://github.com/uutils/coreutils/issues/9244
 for /f "usebackq delims=" %%A in (`where link`) do set "RUSTC_LINKER=%%A" :: https://github.com/conda-forge/uutils-coreutils-feedstock/pull/22
 
-:: convert Windows format path to Unix format
-if "%LN%" == "" ( echo LN not set & goto :error)
-if "%PREFIX%" == "" ( echo PREFIX not set & goto :error)
-if "%RUSTC_LINKER%" == "" ( echo RUSTC_LINKER not set & goto :error)
-for /f "usebackq delims=" %%A in (`cygpath -u "%%LN%%"`) do set "LN=%%A"
-for /f "usebackq delims=" %%A in (`cygpath -u "%%PREFIX%%"`) do set "PREFIX=%%A"
-for /f "usebackq delims=" %%A in (`cygpath -u "%%RUSTC_LINKER%%"`) do set "RUSTC_LINKER=%%A"
+call :ConvertPath "%LN%" LN
+call :ConvertPath "%PREFIX%" PREFIX
+call :ConvertPath "%RUSTC_LINKER%" RUSTC_LINKER
 
 :: build
 set CARGO_BUILD_TARGET=
@@ -23,3 +19,10 @@ goto :EOF
 :error
 echo Failed with error #%errorlevel%.
 exit 1
+
+:ConvertPath
+:: convert Windows format path to Unix format
+rem Parameter 1=[%1], Return name=[%2]
+if %1 == "" ( echo %2 is empty & goto :error )
+for /f "usebackq delims=" %%A in (`cygpath -u %1`) do set "%2=%%A"
+exit /b 0
