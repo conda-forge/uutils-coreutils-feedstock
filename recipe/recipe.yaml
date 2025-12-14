@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: uutils-coreutils
-  version: 0.4.0
+  version: "0.5.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
-  sha256: 5f0c3f97b807e72edccc844c6a685ec9862199f16a665df07de5b1d20ec21233
+  sha256: 83535e10c3273c31baa2f553dfa0ceb4148914e9c1a9c5b00d19fbda5b2d4d7d
 
 build:
-  number: 2
+  number: 0
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
