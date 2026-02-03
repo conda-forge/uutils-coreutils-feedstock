@@ -7,12 +7,10 @@ for /f "usebackq delims=" %%A in (`where ln`) do set "LN=%%A" :: https://github.
 for /f "usebackq delims=" %%A in (`where link`) do set "RUSTC_LINKER=%%A" :: https://github.com/conda-forge/uutils-coreutils-feedstock/pull/22
 
 call :ConvertPath "%LN%" LN
-call :ConvertPath "%PREFIX%" PREFIX
 call :ConvertPath "%RUSTC_LINKER%" RUSTC_LINKER
 
 :: build
-set CARGO_BUILD_TARGET=
-make PROFILE=release MULTICALL=y PREFIX="%PREFIX%" LN="%LN%" install || goto :error
+cargo install --root "%PREFIX%" --path . --locked --profile release-small --features windows || goto :error
 
 goto :EOF
 

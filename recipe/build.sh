@@ -9,4 +9,4 @@ if [[ "$(uname)" == "Linux" ]]; then
 fi
 
 export -n CARGO_BUILD_TARGET # https://github.com/uutils/coreutils/issues/9206
-make PROFILE=release MULTICALL=y PREFIX="${PREFIX}" install
+make PROFILE=release-small MULTICALL=y PREFIX="${PREFIX}" install
