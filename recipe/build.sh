@@ -8,5 +8,5 @@ if [[ "$(uname)" == "Linux" ]]; then
     export LIBCLANG_PATH=$BUILD_PREFIX/lib
 fi
 
-export -n CARGO_BUILD_TARGET # https://github.com/uutils/coreutils/issues/9206
-make PROFILE=release-small MULTICALL=y PREFIX="${PREFIX}" install
+export LN="$(command -v ln) -sf"
+make PROFILE=release-small MULTICALL=y PREFIX="${PREFIX}" LN="${LN}" install
