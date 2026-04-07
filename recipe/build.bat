@@ -9,11 +9,13 @@ for /f "usebackq delims=" %%A in (`where link`) do set "RUSTC_LINKER=%%A" :: htt
 call :ConvertPath "%LN%" LN
 call :ConvertPath "%RUSTC_LINKER%" RUSTC_LINKER
 
+:: copy l10n resources (only for utilities that exist in the source tree)
+for /d %%D in (coreutils-l10n\src\uu\*) do (
+    if exist "src\uu\%%~nxD" xcopy /s /e /y /q "%%D\*" "src\uu\%%~nxD\" >nul
+)
+
 :: build
 cargo install --root "%PREFIX%" --path . --locked --profile release-small --features windows || goto :error
-
-:: copy l10n resources
-xcopy /s /e /y /q "coreutils-l10n\src\uu\*" "%PREFIX%\share\locales\" >nul
 
 goto :EOF
 

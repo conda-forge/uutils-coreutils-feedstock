@@ -16,7 +16,7 @@ source:
     depth: 1
 
 build:
-  number: 1
+  number: 2
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
