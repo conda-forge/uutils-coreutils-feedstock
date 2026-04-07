@@ -10,3 +10,6 @@ fi
 
 export LN="$(command -v ln) -sf"
 make PROFILE=release-small MULTICALL=y PREFIX="${PREFIX}" LN="${LN}" install
+
+# copy l10n resources
+/bin/cp -r coreutils-l10n/src/uu/ "${PREFIX}/share/locales/"

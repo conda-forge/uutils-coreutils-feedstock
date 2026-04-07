@@ -9,11 +9,14 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
-  sha256: 03f765fd23e9cc66f8789edc6928644d8eae5e5a7962d83795739d0a8a85eaef
+  - url: https://github.com/uutils/coreutils/archive/${{ version }}.tar.gz
+    sha256: 03f765fd23e9cc66f8789edc6928644d8eae5e5a7962d83795739d0a8a85eaef
+  - git: https://github.com/uutils/coreutils-l10n.git
+    target_directory: coreutils-l10n
+    depth: 1
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
