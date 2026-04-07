@@ -12,6 +12,9 @@ call :ConvertPath "%RUSTC_LINKER%" RUSTC_LINKER
 :: build
 cargo install --root "%PREFIX%" --path . --locked --profile release-small --features windows || goto :error
 
+:: copy l10n resources
+xcopy /s /e /y /q "coreutils-l10n\src\uu\*" "%PREFIX%\share\locales\" >nul
+
 goto :EOF
 
 :error
