@@ -21,6 +21,12 @@ build:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
       CARGO_PROFILE_RELEASE_LTO: fat
+  prefix_detection:
+    # Rust packs string literals without terminators, so rewriting the build
+    # prefix embedded by stdbuf (LIBSTDBUF_DIR) shifts neighbouring utility
+    # names and breaks e.g. `nl`. Nothing needs the path: stdbuf finds
+    # libstdbuf next to the executable.
+    ignore_binary_files: true
 
 requirements:
   build:
@@ -50,6 +56,14 @@ tests:
       - cat --help
       - cp --version
       - mkdir --version
+      - if: unix
+        then:
+          - nl --version
+          - stdbuf -oL true
+      # every utility in the multi-call binary must be callable by name
+      - if: unix
+        then: for utility in $(coreutils --list); do test -x "$PREFIX/bin/$utility" || exit 1; done
+        else: for /f "usebackq delims=" %%U in (`coreutils --list`) do if not "%%U" == "link" if not exist "%PREFIX%\bin\%%U.exe" exit 1
   - package_contents:
       bin:
         - coreutils
