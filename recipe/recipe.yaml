@@ -16,7 +16,7 @@ source:
     depth: 1
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -48,6 +48,14 @@ tests:
   - script:
       - coreutils --help
       - cat --help
+      - cp --version
+      - mkdir --version
+  - package_contents:
+      bin:
+        - coreutils
+        - cat
+        - cp
+        - mkdir
 
 about:
   summary: Cross-platform Rust rewrite of the GNU coreutils
