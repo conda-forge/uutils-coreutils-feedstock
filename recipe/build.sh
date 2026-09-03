@@ -18,3 +18,11 @@ done
 
 export LN="$(command -v ln) -sf"
 make PROFILE=release-small MULTICALL=y PREFIX="${PREFIX}" LN="${LN}" install
+
+# stdbuf looks for libstdbuf next to its own executable before falling back to
+# the compile-time LIBSTDBUF_DIR. That fallback contains the build prefix, which
+# is deliberately not rewritten at install time (see prefix_detection).
+if [ -d "${PREFIX}/libexec/coreutils" ]; then
+    mv "${PREFIX}"/libexec/coreutils/libstdbuf.* "${PREFIX}/bin/"
+    rmdir "${PREFIX}/libexec/coreutils" "${PREFIX}/libexec"
+fi
