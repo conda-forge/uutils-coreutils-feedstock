@@ -34,7 +34,8 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
-    - make
+    - if: unix
+      then: make
     - if: linux
       then:
         - ${{ cdt('libselinux-devel') }}
