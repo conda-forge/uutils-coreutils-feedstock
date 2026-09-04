@@ -16,7 +16,7 @@ source:
     depth: 1
 
 build:
-  number: 1
+  number: 2
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -34,11 +34,8 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
-    - make
-    - if: linux
-      then:
-        - ${{ cdt('libselinux-devel') }}
-        - clangdev
+    - if: unix
+      then: make
   ignore_run_exports:
     from_package:
       - if: win
